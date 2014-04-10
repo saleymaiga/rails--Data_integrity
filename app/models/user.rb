@@ -13,5 +13,4 @@ class User < ActiveRecord::Base
 	validates_length_of :lname, maximum:10, message: "is too long (maximum is 10 characters)"
 
     
-
 end

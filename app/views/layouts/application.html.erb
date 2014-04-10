@@ -11,6 +11,10 @@
 	<% flash.each do |key,value| %>
       <%= value %>
 	<% end %>
+    
+    <% if current_user %>
+	<%= link_to "Logout" , logout_path, method: :delete, confirm: "CONFIRM LOGOUT" %>
+	<% end %>
 
 <%= yield %>
 

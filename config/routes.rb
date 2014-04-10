@@ -1,13 +1,20 @@
 Myapp::Application.routes.draw do
 
+   
 
-
-  get "users/new"
+ 
   resources :users
 
     resources :orders do
       resources :products
     end
+
+
+    get "/login" => "sessions#new", as: :login
+    post "/login" => "sessions#create"
+    delete "/logout" => "sessions#destroy", as: :logout
+
+    root to: "sessions#new"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

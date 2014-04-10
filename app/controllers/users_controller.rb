@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+	before_filter :authorize!, except: [:new, :create]
+
 
   def new
   	@user = User.new
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
   	   flash[:notice] = "Welcome #{@user.fname}"
-  	   redirect_to user_path
+  	   redirect_to user_path(@user)
   	else
   		flash[:notice] = "There was a problem signing you in"
   		render "users/new"
